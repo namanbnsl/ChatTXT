@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 
+import MainProvider from "@/components/providers/MainProvider";
+
 const font = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -15,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <MainProvider>{children}</MainProvider>
+      </body>
     </html>
   );
 }
