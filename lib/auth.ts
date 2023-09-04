@@ -19,15 +19,6 @@ export const authOptions: AuthOptions = {
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
     EmailProvider({
-      server: {
-        host: env.EMAIL_SERVER_HOST,
-        port: parseFloat(env.EMAIL_SERVER_PORT),
-        auth: {
-          user: env.EMAIL_SERVER_USER,
-          pass: env.EMAIL_SERVER_PASSWORD,
-        },
-      },
-      from: env.EMAIL_FROM,
       sendVerificationRequest: sendVerificationRequest,
     }),
   ],

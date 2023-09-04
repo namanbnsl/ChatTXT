@@ -1,7 +1,7 @@
-import { render } from "@react-email/render";
-import { createTransport } from "nodemailer";
-import { AuthEmail } from "./auth-email";
+import { env } from "@/env";
+import AuthEmail from "@/lib/emails/auth/auth-email";
 import { SendVerificationRequestParams } from "next-auth/providers/index";
+import { Resend } from "resend";
 
 export async function sendVerificationRequest(
   params: SendVerificationRequestParams
@@ -9,22 +9,15 @@ export async function sendVerificationRequest(
   const { identifier, url, provider } = params;
   const { host } = new URL(url);
 
-  const transport = createTransport(provider.server);
+  const resend = new Resend(env.RESEND_API_KEY);
 
-  const emailHtml = render(<AuthEmail validationLink={url} />);
-
-  const result = await transport.sendMail({
+  resend.emails.send({
+    from: "onboarding@resend.dev",
     to: identifier,
-    from: provider.from,
-    subject: `Sign in to ${host}`,
+    subject: "Get started with saturn",
+    react: <AuthEmail validationLink={url} />,
     text: text({ url, host }),
-    html: emailHtml,
   });
-
-  const failed = result.rejected.concat(result.pending).filter(Boolean);
-  if (failed.length) {
-    throw new Error(`Email(s) (${failed.join(", ")}) could not be sent`);
-  }
 }
 
 /** Email Text body (fallback for email clients that don't render HTML, e.g. feature phones) */

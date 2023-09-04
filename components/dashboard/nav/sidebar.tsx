@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { Icons } from "../../ui/icons";
 import { UserAvatar } from "@/components/dashboard/nav/user-avatar";
 
-const DashboardHeader = () => {
+const DashboardSidebar = () => {
   type TLinks = { name: string; href: string }[];
 
   const links: TLinks = [
@@ -52,4 +52,4 @@ const DashboardHeader = () => {
   );
 };
 
-export default DashboardHeader;
+export default DashboardSidebar;

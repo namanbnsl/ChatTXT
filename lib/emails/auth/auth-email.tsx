@@ -14,7 +14,7 @@ import {
 import * as React from "react";
 
 interface Props {
-  validationLink?: string;
+  validationLink: string;
 }
 
 export const AuthEmail = ({ validationLink }: Props) => (
