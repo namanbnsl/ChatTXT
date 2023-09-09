@@ -42,6 +42,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+
+  chats Chat[]
 }
 
 model VerificationToken {
@@ -50,4 +52,13 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Chat {
+  id      String @id @default(dbgenerated("concat('cht_', replace(cast(gen_random_uuid() as text), '-', ''))")) @db.Text
+  name    String
+  fileUrl String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
 }

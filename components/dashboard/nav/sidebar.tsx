@@ -2,22 +2,14 @@ import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { UserAvatar } from "@/components/dashboard/nav/user-avatar";
 import { getAuthSession } from "@/lib/auth";
+import NewChatBtn from "@/components/dashboard/new-chat-btn";
+import { prisma } from "@/lib/db";
 
 const DashboardSidebar = async () => {
-  type TLinks = { name: string; href: string }[];
-
-  const chats: TLinks = [
-    {
-      name: "5-day-schedule",
-      href: "/dashboard/chats/5-day-schedule",
-    },
-    {
-      name: "batman",
-      href: "/dashboard/chats/batman",
-    },
-  ];
-
   const session = await getAuthSession();
+  const chats = await prisma.chat.findMany({
+    where: { user: { email: session?.user?.email } },
+  });
 
   return (
     <div className="hidden h-full md:flex md:w-72 md:flex-col md:fixed md:inset-y-0 z-80 border-r">
@@ -27,17 +19,18 @@ const DashboardSidebar = async () => {
             <h1 className="text-2xl font-bold">text-ai</h1>
           </Link>
           <div className="space-y-1">
-            {chats.map((route) => (
+            <NewChatBtn />
+            {chats.map((chat) => (
               <Link
-                key={route.href}
-                href={route.href}
+                key={chat.name}
+                href={`/dashboard/chats/${chat.name}`}
                 className={
                   "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:bg-gray-500/10 rounded-lg transition"
                 }
               >
                 <div className="flex items-center flex-1">
                   <MessageCircle className={"h-5 w-5 mr-3"} />
-                  {route.name}
+                  {chat.name}
                 </div>
               </Link>
             ))}

@@ -1,3 +1,4 @@
+import { CreateChatModal } from "@/components/modals/create-chat-modal";
 import { getAuthSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
@@ -11,7 +12,12 @@ const DashboardLayout = async (props: Props) => {
 
   if (!session?.user) return redirect("/signIn");
 
-  return <>{props.children}</>;
+  return (
+    <>
+      <CreateChatModal />
+      {props.children}
+    </>
+  );
 };
 
 export default DashboardLayout;
