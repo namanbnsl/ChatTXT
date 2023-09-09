@@ -22,7 +22,7 @@ export const AuthEmail = ({ validationLink }: Props) => (
     <Head>
       <Font
         fontFamily="Quicksand"
-        fallbackFontFamily="Verdana"
+        fallbackFontFamily="Arial"
         webFont={{
           url: "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap",
           format: "woff2",
@@ -31,18 +31,18 @@ export const AuthEmail = ({ validationLink }: Props) => (
         fontStyle="normal"
       />
     </Head>
-    <Preview>Your login link for saturn.</Preview>
+    <Preview>Your login link for text ai</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={heading}>Your login link for saturn</Heading>
+        <Heading style={heading}>Your login link for text ai</Heading>
         <Section style={buttonContainer}>
           <Button pY={11} pX={23} style={button} href={validationLink}>
-            Login to saturn
+            Login to text ai
           </Button>
         </Section>
         <Hr style={hr} />
         <Link href="http://localhost:3000" style={reportLink}>
-          saturn
+          text-ai
         </Link>
       </Container>
     </Body>

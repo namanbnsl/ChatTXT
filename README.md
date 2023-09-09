@@ -1,3 +1,3 @@
-# saturn - 🪐
+# text-ai
 
-A platform where people can sell their products and earn money.
+A platform where people can chat with text.

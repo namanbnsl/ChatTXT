@@ -19,12 +19,10 @@ export function UserAvatar({ url, name }: { url: string; name: string }) {
       <DropdownMenuTrigger asChild>
         <Avatar className="cursor-pointer">
           <AvatarImage src={url} alt={`@${name}`} />
-          <AvatarFallback>
-            {name.charAt(0) ? name.charAt(0) : "HI"}
-          </AvatarFallback>
+          <AvatarFallback>{name ? name.charAt(0) : "HI"}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
