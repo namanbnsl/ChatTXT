@@ -12,6 +12,9 @@ export const env = createEnv({
 
     // email
     RESEND_API_KEY: z.string().min(2),
+
+    // file uploads
+    UPLOADTHING_SECRET: z.string().min(2),
   },
   client: {},
   runtimeEnv: {
@@ -24,5 +27,8 @@ export const env = createEnv({
 
     // email
     RESEND_API_KEY: process.env.RESEND_API_KEY,
+
+    // file uploads
+    UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
   },
 });

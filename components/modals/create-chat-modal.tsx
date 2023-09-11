@@ -26,10 +26,14 @@ import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/useModalStore";
 import { useSession } from "next-auth/react";
 import { PlusCircleIcon } from "lucide-react";
+import { FileUpload } from "@/components/file-upload";
 
 const formSchema = z.object({
   name: z.string().min(1, {
     message: "Chat name is required.",
+  }),
+  textUrl: z.string().min(1, {
+    message: "Training text is required.",
   }),
 });
 
@@ -44,6 +48,7 @@ export const CreateChatModal = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      textUrl: "",
     },
   });
 
@@ -94,6 +99,25 @@ export const CreateChatModal = () => {
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                         placeholder="Enter chat name"
                         {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="flex items-center justify-center text-center">
+              <FormField
+                control={form.control}
+                name="textUrl"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <FileUpload
+                        endpoint="chatText"
+                        value={field.value}
+                        onChange={field.onChange}
                       />
                     </FormControl>
                     <FormMessage />

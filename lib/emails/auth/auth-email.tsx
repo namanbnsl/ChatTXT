@@ -31,18 +31,18 @@ export const AuthEmail = ({ validationLink }: Props) => (
         fontStyle="normal"
       />
     </Head>
-    <Preview>Your login link for text ai</Preview>
+    <Preview>Your login link for ChatTXT</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={heading}>Your login link for text ai</Heading>
+        <Heading style={heading}>Your login link for ChatTXT</Heading>
         <Section style={buttonContainer}>
           <Button pY={11} pX={23} style={button} href={validationLink}>
-            Login to text ai
+            Login to ChatTXT
           </Button>
         </Section>
         <Hr style={hr} />
         <Link href="http://localhost:3000" style={reportLink}>
-          text-ai
+          ChatTXT
         </Link>
       </Container>
     </Body>

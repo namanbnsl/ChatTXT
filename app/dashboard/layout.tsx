@@ -1,3 +1,4 @@
+import DashboardSidebar from "@/components/dashboard/nav/sidebar";
 import { CreateChatModal } from "@/components/modals/create-chat-modal";
 import { getAuthSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -15,7 +16,8 @@ const DashboardLayout = async (props: Props) => {
   return (
     <>
       <CreateChatModal />
-      {props.children}
+      <DashboardSidebar />
+      <main className="md:pl-72 pb-10">{props.children}</main>
     </>
   );
 };

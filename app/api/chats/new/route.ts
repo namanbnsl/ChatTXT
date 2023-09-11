@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   await prisma.chat.create({
     data: {
       name: body.name,
-      fileUrl: "https://google.com",
+      fileUrl: body.textUrl,
       user: {
         connect: {
           email: body.email,

@@ -14,7 +14,7 @@ export async function sendVerificationRequest(
   resend.emails.send({
     from: "onboarding@resend.dev",
     to: identifier,
-    subject: "Get started with text-ai",
+    subject: "Get started with ChatTXT",
     react: <AuthEmail validationLink={url} />,
     text: text({ url, host }),
   });

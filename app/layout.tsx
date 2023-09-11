@@ -7,7 +7,7 @@ import MainProvider from "@/components/providers/MainProvider";
 const font = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "text ai",
+  title: "ChatTXT",
 };
 
 export default function RootLayout({

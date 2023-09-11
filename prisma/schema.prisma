@@ -56,7 +56,7 @@ model VerificationToken {
 
 model Chat {
   id      String @id @default(dbgenerated("concat('cht_', replace(cast(gen_random_uuid() as text), '-', ''))")) @db.Text
-  name    String
+  name    String @unique
   fileUrl String
 
   user   User   @relation(fields: [userId], references: [id])
